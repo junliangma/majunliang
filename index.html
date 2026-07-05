@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马君亮 个人简介</title>
+    <style>
+        :root {
+            --primary: #1a3c5e;
+            --accent: #c9a84c;
+            --bg: #f5f3ee;
+            --card-bg: #ffffff;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #e0dcd4;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 10px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "STSong", "Songti SC", Georgia, "Times New Roman", serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: linear-gradient(135deg, #1a3c5e 0%, #0f2840 40%, #1a3c5e 100%);
+            color: #fff;
+            padding: 48px 0 36px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #d4b85c, var(--accent));
+        }
+        .header h1 {
+            font-size: 2.4em;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.85;
+            letter-spacing: 2px;
+        }
+
+        /* ── Container ── */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ── Photo Card ── */
+        .photo-card {
+            display: flex;
+            gap: 36px;
+            align-items: flex-start;
+            background: var(--card-bg);
+            margin: -30px auto 32px;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+        }
+        .photo-wrapper {
+            flex-shrink: 0;
+            width: 220px;
+            height: 330px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-info h2 {
+            font-size: 1.6em;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .photo-info .title-line {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.05em;
+            margin-bottom: 16px;
+        }
+        .info-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 24px;
+        }
+        .info-list li {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+        }
+        .info-list .label {
+            color: var(--text-light);
+            white-space: nowrap;
+            font-size: 0.95em;
+        }
+        .info-list .value {
+            font-weight: 500;
+        }
+        .info-list .value a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* ── Sections ── */
+        section {
+            background: var(--card-bg);
+            margin-bottom: 24px;
+            padding: 32px 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        section h3 {
+            font-size: 1.25em;
+            color: var(--primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 14px;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            text-indent: 2em;
+            font-size: 1.05em;
+        }
+
+        /* ── Papers ── */
+        .paper-list { list-style: none; }
+        .paper-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95em;
+        }
+        .paper-list li:last-child { border-bottom: none; }
+        .paper-list .journal {
+            color: var(--primary);
+            font-style: italic;
+        }
+        .paper-list .tag {
+            display: inline-block;
+            background: #e8f0f8;
+            color: #2c5f8a;
+            padding: 1px 8px;
+            border-radius: 4px;
+            font-size: 0.82em;
+            margin-left: 6px;
+        }
+        .paper-list .tag.corresponding {
+            background: #fdf3d6;
+            color: #8a6d14;
+        }
+
+        /* ── Books ── */
+        .book-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .book-item {
+            padding: 16px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .book-item .book-title { font-weight: 600; color: var(--primary); }
+        .book-item .book-pub { color: var(--text-light); font-size: 0.9em; margin-top: 4px; }
+
+        /* ── Projects ── */
+        .project-list { list-style: none; }
+        .project-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95em;
+        }
+        .project-list li:last-child { border-bottom: none; }
+        .project-list .proj-name { font-weight: 600; }
+        .project-list .proj-meta { color: var(--text-light); font-size: 0.9em; margin-top: 2px; }
+
+        /* ── Patents ── */
+        .patent-list { list-style: none; }
+        .patent-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.92em;
+        }
+        .patent-list li:last-child { border-bottom: none; }
+        .patent-list .patent-id { color: var(--text-light); font-size: 0.88em; }
+
+        /* ── Certs ── */
+        .cert-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .cert-badge {
+            padding: 8px 18px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.92em;
+            background: #fafaf7;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 32px 0;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .photo-card { flex-direction: column; align-items: center; text-align: center; }
+            .info-list { grid-template-columns: 1fr; }
+            .book-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<div class="header">
+    <h1>马 君 亮</h1>
+    <div class="subtitle">工学博士 · 硕士生导师 · 陕西师范大学</div>
+</div>
+
+<!-- ═══════════════ PHOTO + BASIC INFO ═══════════════ -->
+<div class="container">
+    <div class="photo-card">
+        <div class="photo-wrapper">
+            <img src="马君亮.jpg" alt="马君亮">
+        </div>
+        <div class="photo-info">
+            <h2>马君亮</h2>
+            <div class="title-line">工学博士 &nbsp;|&nbsp; 硕士生导师</div>
+            <ul class="info-list">
+                <li><span class="label">工作单位：</span><span class="value">陕西师范大学</span></li>
+                <li><span class="label">职称/职务：</span><span class="value">讲师</span></li>
+                <li><span class="label">研究方向：</span><span class="value">知识追踪、AI+教育</span></li>
+                <li><span class="label">电子邮箱：</span><span class="value"><a href="mailto:junliangma@snnu.edu.cn">junliangma@snnu.edu.cn</a></span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ═══════════ 个人简介 ═══════════ -->
+    <section>
+        <h3>个人简介</h3>
+        <p class="intro-text">
+            马君亮，工学博士，硕士生导师，陕西师范大学计算机公共课教学团队负责人，陕西省"SAIL"核心素养课程建设专家。研究聚焦于知识追踪以及人工智能技术在教育领域的应用。主持了教育部产学合作协同育人项目"基于WPS的大学计算机基础课程改革"以及多项中央高校项目。在《Pattern Recognition Letters》等期刊发表论文20余篇，第一人获得发明专利授权13项，出版教材4本，专著1本。
+        </p>
+    </section>
+
+    <!-- ═══════════ 学术论文 ═══════════ -->
+    <section>
+        <h3>代表性学术论文</h3>
+        <ol class="paper-list">
+            <li>
+                Ma Junliang, Xiao Bing, Deng Cheng. <span class="journal">Graph based semi-supervised classification with probabilistic nearest neighbors</span>. Pattern Recognition Letters, 2020, 133: 94-101.
+                <span class="tag">SCI 三区</span> <span class="tag">特级</span>
+            </li>
+            <li>
+                Ma Junliang, Wang Nannan, Xiao Bing. <span class="journal">Semi-supervised classification with graph structure similarity and extended label propagation</span>. IEEE Access, 2019: 58010-58022.
+                <span class="tag">SCI 二区</span> <span class="tag">特级</span>
+            </li>
+            <li>
+                Bing Xiao, Jing Zhao, Cong Zhao, <strong>Junliang Ma*</strong>. <span class="journal">Video Text Detection Based on Multi-Feature Fusion</span>. Journal of Intelligent and Fuzzy Systems, 37(2): 2125-2136, 2019.
+                <span class="tag corresponding">通讯作者</span> <span class="tag">SCI 四区</span> <span class="tag">特级</span>
+            </li>
+            <li>
+                Hua Jiang, Bing Xiao, Yintao Luo, <strong>Junliang Ma*</strong>. <span class="journal">A self-attentive model for tracing knowledge and engagement in parallel</span>. Pattern Recognition Letters, 2023, 165: 25-32.
+                <span class="tag corresponding">通讯作者</span> <span class="tag">SCI 三区</span> <span class="tag">特级</span>
+            </li>
+        </ol>
+        <p style="margin-top:12px; color:var(--text-light); font-size:0.9em;">共发表论文<strong>20余篇</strong>，以上为代表性论文。</p>
+    </section>
+
+    <!-- ═══════════ 著作 / 教材 ═══════════ -->
+    <section>
+        <h3>著作与教材</h3>
+        <div class="book-grid">
+            <div class="book-item">
+                <div class="book-title">《大学计算机基础实验教程 (Windows 10 + Office 2019)》</div>
+                <div class="book-pub">科学出版社 · 2022.10</div>
+            </div>
+            <div class="book-item">
+                <div class="book-title">《Access 数据库应用技术 (Access 2010版)》</div>
+                <div class="book-pub">科学出版社 · 2015.1</div>
+            </div>
+            <div class="book-item">
+                <div class="book-title">《Visual Basic 2005 程序设计》</div>
+                <div class="book-pub">高等教育出版社 · 2009.2</div>
+            </div>
+            <div class="book-item">
+                <div class="book-title">专著 1 本</div>
+                <div class="book-pub">——</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 科研项目 ═══════════ -->
+    <section>
+        <h3>主持（或参与）项目</h3>
+        <ul class="project-list">
+            <li>
+                <div class="proj-name">基于WPS的大学计算机基础课程教学内容与课程体系改革项目</div>
+                <div class="proj-meta">教育部产学合作协同育人项目（230701701075115）· 2023–2026 · 5万元 · <strong>主持</strong></div>
+            </li>
+            <li>
+                <div class="proj-name">基于半监督学习的在线学习行为分析与预测</div>
+                <div class="proj-meta">中央高校科研基本业务费项目（GK201803058）· 2018.1–2019.12 · 5万元 · 已结题 · <strong>主持</strong></div>
+            </li>
+            <li>
+                <div class="proj-name">基于概率图模型的图像分割方法若干问题研究</div>
+                <div class="proj-meta">中央高校科研基本业务费项目（GK201304009）· 2013.1–2014.12 · 5万元 · 已结题 · <strong>主持</strong></div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- ═══════════ 授权发明专利 ═══════════ -->
+    <section>
+        <h3>授权发明专利（共13项，第一发明人）</h3>
+        <ul class="patent-list">
+            <li>一种多层半监督分类方法 &nbsp;<span class="patent-id">ZL 2018116197446 · 2024-09-06</span></li>
+            <li>基于概率近邻的半监督分类方法 &nbsp;<span class="patent-id">ZL 2018115982862</span></li>
+            <li>SEMI-SUPERVISED CLASSIFICATION METHOD BASED ON DYNAMIC CONSTRUCTION GRAPH &nbsp;<span class="patent-id">LU506142（国际专利）· 2024-07-22</span></li>
+            <li>基于动态构图的半监督分类方法 &nbsp;<span class="patent-id">ZL 201911131232.X · 2023-10-27</span></li>
+            <li>一种基于半监督学习相结合的图像分割方法 &nbsp;<span class="patent-id">ZL 201610321142.7 · 2018-11-06</span></li>
+            <li>一种基于图论和半监督学习相结合的图像分割方法 &nbsp;<span class="patent-id">ZL 201510906391.8 · 2018-06-08</span></li>
+            <li>一种图像分割方法及系统 &nbsp;<span class="patent-id">ZL 201610494277.3 · 2017-08-22</span></li>
+            <li>一种基于带权图的半监督图像分类方法 &nbsp;<span class="patent-id">ZL 2018116172491 · 2023-04-18</span></li>
+            <li>一种交互式图像分割方法 &nbsp;<span class="patent-id">ZL 201811181945.2 · 2021-06-22</span></li>
+            <li>一种图像目标识别方法 &nbsp;<span class="patent-id">ZL 201811181940.X · 2021-09-14</span></li>
+        </ul>
+        <p style="margin-top:12px; color:var(--text-light); font-size:0.9em;">另有3项发明专利（略），共13项授权发明专利。</p>
+    </section>
+
+    <!-- ═══════════ 资质认证 ═══════════ -->
+    <section>
+        <h3>资质认证</h3>
+        <div class="cert-grid">
+            <span class="cert-badge">🏅 神州数码认证网络工程师</span>
+            <span class="cert-badge">🏅 神州数码认证网络讲师</span>
+            <span class="cert-badge">🏅 H3C 网络工程师</span>
+            <span class="cert-badge">🏅 H3C 网络工程师讲师</span>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>陕西师范大学 · 计算机科学学院</p>
+        <p>📧 junliangma@snnu.edu.cn</p>
+    </div>
+</div>
+
+</body>
+</html>

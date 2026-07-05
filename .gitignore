@@ -1,0 +1,5 @@
+# Source documents (not needed for web)
+*.doc
+*.docx
+马君亮简介1.txt
+server.js
